@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params[:post])
+    @post = current_user.posts.build(params[:post]) #why is this changed from @post = Post.new(params[:post]) to  @post = current_user.posts.build(params[:post]) after implementing associations? is it because the post is now associated with a user?  it automatically assigns the id?  what is build vs new?
     if @post.save
       flash[:notice] = "Post was saved."
       redirect_to @post

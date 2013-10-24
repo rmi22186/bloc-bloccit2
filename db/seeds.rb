@@ -26,7 +26,7 @@ rand(4..10).times do
 end
 
   u = User.first
-  u.skip_confirmation!
+  u.skip_reconfirmation!
   u.update_attributes(email: 'rmi22186@gmail.com', password: 'helloworld', password_confirmation: 'helloworld')
 
 puts "Seed finished"

@@ -2,12 +2,11 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # is 'user' a specific term for cancan here?  If I passed in x, how would cancan know that x is to determine if it's a user or not?
-    if user.role? :member
+    user ||= User.new           # is 'user' a specific term for cancan here?  If I passed in x, how would cancan know that x is to determine if it's a user or not?
+    if user.role? :member          # if user's role is a member...he can manage posts and comments, but only for his only user id
       can :manage, Post, :user_id => user.id # is this Post and not posts because Post refers to the entire table whereas posts refers to just a single post?
       can :manage, Comment, :user_id => user.id # same question
     end
-
 
     if user.role? :moderator
         can :destroy, Post

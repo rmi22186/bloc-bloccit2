@@ -37,6 +37,7 @@ rand(4..10).times do  #do x times, where x is between 4 and 10 inclusive
         body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
     end
   end
+end
 
 u = User.new(
     name: 'Admin User',
@@ -63,8 +64,6 @@ u = User.new(
     password_confirmation: 'helloworld')
   u.skip_confirmation!  #difference between confirmation and reconfirmation?
   u.save  
-
-end
 
   puts "Seed finished"
   puts "#{User.count} users created"

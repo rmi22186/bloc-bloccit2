@@ -24,6 +24,7 @@ class PostsController < ApplicationController
       flash[:error] = "There was an error saving the post. Please try again." # flash the error notice
       render :new                               # render the "new" page again
     end
+  end
 
   def edit
     @topic = Topic.find(params[:topic_id])
@@ -43,7 +44,5 @@ class PostsController < ApplicationController
       render :edit
     end
   end
-
-  
-  end
 end
+

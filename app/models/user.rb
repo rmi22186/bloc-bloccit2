@@ -5,10 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar
   has_many :posts
 
   before_create :set_member
+  mount_uploader :avatar, AvatarUploader
 
   ROLES = %w[member moderator admin] # does ROLES need to be capitalized?  order of roles is different 
   def role?(base_role) #is it possible to have a role outside of the above?

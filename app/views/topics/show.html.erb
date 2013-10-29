@@ -17,12 +17,13 @@
           <small>
             <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %> submitted <%= time_ago_in_words(post.created_at) %> ago by 
             <%= post.user.name %><br/>
-            <%= image_tag(post.image.thumb.url) if post.image? %>
+            <%= image_tag(post.image.thumb.url) if post.image.present? %>
             <%= post.comments.count %> Comments
           </small>
         </div>
       </div>
       <% end %>
+      <%= will_paginate @posts %>
     </div>
     <div class="span4">
       <% if can? :create, Post %>

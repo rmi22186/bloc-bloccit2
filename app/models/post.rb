@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :body, :title, :topic, :postimage
+  attr_accessible :body, :title, :topic, :image
   has_many :comments
   belongs_to :user
   belongs_to :topic
@@ -11,5 +11,5 @@ class Post < ActiveRecord::Base
   validates :topic, presence: true
   validates :user, presence: true
 
-  mount_uploader :postimage, PostimageUploader
+  mount_uploader :image, ImageUploader
 end

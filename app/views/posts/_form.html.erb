@@ -27,6 +27,15 @@
   <% end %>
 
   <div class="control-group">
+    <%= image_tag(post.postimage.thumb.url) if post.postimage? %>
+    <%= f.label :postimage, class: 'control-label' %>
+    <div class="controls"> 
+      <%= f.file_field :postimage %>
+    </div>
+  </div>
+
+
+  <div class="control-group">
     <div class="controls">
       <%= f.submit "Save", class: 'btn' %>
     </div>

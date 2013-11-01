@@ -6,8 +6,9 @@ class Ability
     if user.role? :member          # if user's role is a member...he can manage posts and comments, but only for his only user id
       can :manage, Post, :user_id => user.id # is this Post and not posts because Post refers to the entire table whereas posts refers to just a single post?
       can :manage, Comment, :user_id => user.id # same question
-      can :destroy, Post, :user_id => user.id
-      can :destroy, Comment, :user_id => user.id
+      can :destroy, Post, :user_id => user.id   #is this needed if manage is already there?
+      can :destroy, Comment, :user_id => user.id #is this needed if manage is already there?
+      can :create, Vote
     end
 
     if user.role? :moderator

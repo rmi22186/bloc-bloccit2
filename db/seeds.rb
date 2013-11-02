@@ -73,6 +73,14 @@ u = User.new(
   u.skip_confirmation!  #difference between confirmation and reconfirmation?
   u.save  
 
+  u = User.new(
+    name: 'Rob Ert',
+    email: 'robertming@gmail.com', 
+    password: 'helloworld', 
+    password_confirmation: 'helloworld')
+  u.skip_confirmation!  #difference between confirmation and reconfirmation?
+  u.save  
+
   puts "Seed finished"
   puts "#{User.count} users created"
   puts "#{Post.count} posts created"

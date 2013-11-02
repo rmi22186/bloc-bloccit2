@@ -9,6 +9,7 @@ class Ability
       can :destroy, Post, :user_id => user.id   #is this needed if manage is already there?
       can :destroy, Comment, :user_id => user.id #is this needed if manage is already there?
       can :create, Vote
+      can :manage, Favorite, user_id: user.id #what does this mean?...why isn't it => 
     end
 
     if user.role? :moderator

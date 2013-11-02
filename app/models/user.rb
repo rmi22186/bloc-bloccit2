@@ -6,10 +6,11 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar, :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar, :provider, :uid, :email_favorites
   has_many :posts
   has_many :comments
   has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   before_create :set_member
   mount_uploader :avatar, AvatarUploader
@@ -31,7 +32,9 @@ class User < ActiveRecord::Base
     user
   end
 
-
+  def favorited(post)
+    self.favorites.where(post_id: post.id).first
+  end
 
   ROLES = %w[member moderator admin] # does ROLES need to be capitalized?  order of roles is different 
   def role?(base_role) #is it possible to have a role outside of the above?

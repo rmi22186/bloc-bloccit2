@@ -10,6 +10,7 @@ class Ability
       can :destroy, Comment, :user_id => user.id #is this needed if manage is already there?
       can :create, Vote
       can :manage, Favorite, user_id: user.id #what does this mean?...why isn't it => 
+      can :read, Topic
     end
 
     if user.role? :moderator
@@ -21,7 +22,9 @@ class Ability
         can :manage, :all
     end
 
-    can :read, :all
+    can :read, Topic, public: true
+    can :read, Post
+
 
   end
 end

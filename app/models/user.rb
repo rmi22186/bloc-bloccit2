@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
     role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role) #why is there an extra ? here
   end
 
+  def voted(post)
+    self.votes.where(post_id: post.id).first
+  end
+
   private
 
   def set_member

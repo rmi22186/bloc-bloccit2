@@ -48,9 +48,9 @@ class User < ActiveRecord::Base
   end
 
 
-  ROLES = %w[member moderator admin] # does ROLES need to be capitalized?  order of roles is different 
-  def role?(base_role) #is it possible to have a role outside of the above?
-    role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role) #why is there an extra ? here
+  ROLES = %w[member moderator admin] 
+  def role?(base_role) 
+    role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 
   def voted(post)

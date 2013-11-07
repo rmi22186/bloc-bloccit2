@@ -3,13 +3,13 @@ class Ability
 
   def initialize(user)
     user ||= User.new           # is 'user' a specific term for cancan here?  If I passed in x, how would cancan know that x is to determine if it's a user or not?
-    if user.role? :member          # if user's role is a member...he can manage posts and comments, but only for his only user id
+    if user.role? :member         # if user's role is a member...he can manage posts and comments, but only for his only user id
       can :manage, Post, :user_id => user.id # is this Post and not posts because Post refers to the entire table whereas posts refers to just a single post?
       can :manage, Comment, :user_id => user.id # same question
-      can :destroy, Post, :user_id => user.id   #is this needed if manage is already there?
-      can :destroy, Comment, :user_id => user.id #is this needed if manage is already there?
+      can :destroy, Post, :user_id => user.id   #is this needed if manage is already there? - YES, manage does not include destroy
+      can :destroy, Comment, :user_id => user.id #is this needed if manage is already there? - YES, manage does not include destroy
       can :create, Vote
-      can :manage, Favorite, user_id: user.id #what does this mean?...why isn't it => 
+      can :manage, Favorite, :user_id => user.id
       can :read, Topic
     end
 

@@ -8,13 +8,14 @@ class CommentsController < ApplicationController
     @comment.post = @post
 
     authorize! :create, @comment, message: "You need be signed in to do that."
+    
     if @comment.save
       flash[:notice] = "Comment was created."
       redirect_to [@topic, @post]
     else
       flash[:error] = "There was an error saving the comment. Please try again."
       render 'posts/show'
-    end
+    end 
   end
 
   def destroy
@@ -22,8 +23,8 @@ class CommentsController < ApplicationController
     @post = @topic.posts.find(params[:post_id])
 
     @comment = @post.comments.find(params[:id])
-
     authorize! :destroy, @comment, message: "You need to own the comment to delete it."
+    
     if @comment.destroy
       flash[:notice] = "Comment was removed successfully."
       redirect_to [@topic, @post]

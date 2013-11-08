@@ -16,9 +16,15 @@
       
       <% if can? :create, Comment %>
       <hr/>
-      <h4>New Comment</h4
-      <%= render partial: 'comments/comment_form', locals: { topic: @topic, post: @post, comment: @comment } %>
-      <% end %>
+
+      <a href="#" class="js-show-hide" data-selector="js-new-comment">Add Comment</a>
+      <br/>
+        <div class="js-new-comment hide">
+          <h4>New Comment</h4>
+          <%= render partial: 'comments/comment_form', locals: { topic: @topic, post: @post, comment: @comment } %>
+        </div>
+        <% end %>
+
   </div>
   <div class="span4">
     <% if can? :edit, @post %>
@@ -36,4 +42,5 @@
       </small>
     </div>
     <%= render partial: 'favorites/favorite', locals: {topic: @topic, post: @post } %>
+  </div>
 </div>

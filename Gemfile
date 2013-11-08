@@ -6,6 +6,11 @@ group :development do
   gem 'sqlite3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
 group :production do
   gem 'pg'
 end
@@ -29,3 +34,4 @@ gem 'fog'
 gem 'figaro'
 gem 'will_paginate', '~> 3.0'
 gem 'omniauth-facebook'
+

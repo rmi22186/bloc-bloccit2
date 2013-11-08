@@ -1,0 +1,7 @@
+<% if @comment.valid? %>
+  $(".js-comments").prepend("<%= escape_javascript(render(@comment)) %>");
+  $(".new_comment").replaceWith("<%= escape_javascript(render partial: 'comment_form', locals: { topic: @topic, post: @post, comment: @new_comment }) %>");
+  $('.js-comments-count').html("<%= comment_count(@post) %>");
+<% else %>
+  $(".new_comment").replaceWith("<%= escape_javascript(render partial: 'comment_form', locals: { topic: @topic, post: @post, comment: @comment }) %>");
+<% end %>

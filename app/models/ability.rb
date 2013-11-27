@@ -10,7 +10,7 @@ class Ability
       can :destroy, Comment, :user_id => user.id #is this needed if manage is already there? - YES, manage does not include destroy
       can :create, Vote
       can :manage, Favorite, :user_id => user.id
-      can :read, Topic
+      can :read, Topic, public:true
     end
 
     if user.role? :moderator

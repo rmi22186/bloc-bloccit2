@@ -20,6 +20,4 @@ class Vote < ActiveRecord::Base
     self.post.update_rank
   end
 
-
-
 end
